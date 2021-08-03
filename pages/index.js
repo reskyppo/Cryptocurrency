@@ -12,30 +12,28 @@ function Home({ datas }) {
           Crypto Asset Market
         </div>
         <div className=" mx-auto w-2/3 bg-white p-8 mt-8 rounded-3xl">
-          <div className="flex">
-            <div className="w-1/6 text-center">Pair</div>
-            <div className="w-1/6 text-center">Coin</div>
-            <div className="w-1/6 text-center">Last Price</div>
-            <div className="w-1/6 text-center">24H Change</div>
-            <div className="w-1/6 text-center">Market Cap</div>
-            <div className="w-1/6 text-center">24H Global Volume</div>
+          <div className="flex p-4">
+            <div className="w-1/6 font-semibold">Pair</div>
+            <div className="w-1/6 font-semibold">Coin</div>
+            <div className="w-1/6 font-semibold">Last Price</div>
+            <div className="w-1/6 font-semibold">24H Change</div>
+            <div className="w-1/6 font-semibold">Market Cap</div>
+            <div className="w-1/6 font-semibold">24H Global Volume</div>
           </div>
           {datas.map((data) => (
             <div
               key={data.id}
-              className="flex hover:bg-gray-50 cursor-pointer border-b-2 p-4
+              className="flex hover:bg-gray-50 cursor-pointer diwddvide-x border-b-2 p-4
            "
             >
-              <div className="font-semibold w-1/6  text-center">
+              <div className="font-semibold w-1/6">
                 {data.symbol} <span className="text-gray-500">/ USDT</span>{" "}
               </div>
 
-              <div className="w-1/6  text-center">{data.name}</div>
-              <div className="w-1/6  text-center">
-                {Number(data.priceUsd).toFixed(5)}
-              </div>
+              <div className="w-1/6">{data.name}</div>
+              <div className="w-1/6">{Number(data.priceUsd).toFixed(5)}</div>
 
-              <div className="w-1/6  text-center">
+              <div className="w-1/12 text-right ">
                 {/* logic to change colors according to market changes */}
                 {Number(data.changePercent24Hr).toFixed(2) > 0 ? (
                   <p className="text-green-500 font-semibold">
@@ -48,10 +46,11 @@ function Home({ datas }) {
                 )}
                 {/* end of the logic */}
               </div>
-              <div className="w-1/6  text-center">
+              <div className="w-1/12"></div>
+              <div className="w-1/6">
                 {Number(data.marketCapUsd).toFixed(2)}
               </div>
-              <div className="w-1/6  text-center">
+              <div className="w-1/6 ">
                 {Number(data.volumeUsd24Hr).toFixed(2)}
               </div>
             </div>
