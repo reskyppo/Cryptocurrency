@@ -2,15 +2,22 @@ import Head from "next/head";
 import { useState } from "react";
 
 function Home({ datas }) {
+  // States
   const [inputVal, setInputVal] = useState("");
   const [results, setResults] = useState([]);
+  const [isFound, setIsFound] = useState(true);
 
+  // Function
   const filterData = (input) => {
     setInputVal(input);
     const res = datas.filter((data) => {
-      return data.name.toLowerCase().includes(input);
+      return (
+        data.name.toLowerCase().includes(input) ||
+        data.symbol.toLowerCase().includes(input)
+      );
     });
     setResults(res);
+    res.length > 0 ? setIsFound(true) : setIsFound(false);
   };
 
   return (
@@ -43,8 +50,9 @@ function Home({ datas }) {
             <div className="w-1/6 font-semibold">Market Cap</div>
             <div className="w-1/6 font-semibold">24H Global Volume</div>
           </div>
-          {inputVal === ""
-            ? datas.map((data) => (
+          {isFound ? (
+            inputVal === "" ? (
+              datas.map((data) => (
                 <div
                   key={data.id}
                   className="flex hover:bg-gray-50 cursor-pointer diwddvide-x border-b-2 p-4
@@ -81,7 +89,8 @@ function Home({ datas }) {
                   </div>
                 </div>
               ))
-            : results.map((result) => (
+            ) : (
+              results.map((result) => (
                 <div
                   key={result.id}
                   className="flex hover:bg-gray-50 cursor-pointer diwddvide-x border-b-2 p-4
@@ -118,7 +127,11 @@ function Home({ datas }) {
                     {Number(result.volumeUsd24Hr).toFixed(2)}
                   </div>
                 </div>
-              ))}
+              ))
+            )
+          ) : (
+            <p className="text-2xl text-red-500 text-center">Data not found</p>
+          )}
         </div>
       </div>
     </>
