@@ -39,21 +39,22 @@ function Home({ datas }) {
           />
         </div>
 
-        <div className=" mx-auto w-2/3 bg-white p-8 mt-8 rounded-3xl">
-          <div className="flex p-4">
-            <div className="w-1/6 font-semibold">Pair</div>
-            <div className="w-1/6 font-semibold">Coin</div>
-            <div className="w-1/6 font-semibold">Last Price</div>
-            <div className="w-1/6 font-semibold">24H Change</div>
-            <div className="w-1/6 font-semibold">Market Cap</div>
-            <div className="w-1/6 font-semibold">24H Global Volume</div>
+        <div className=" mx-auto w-2/3 bg-white border-2 border-gray-100 p-8 mt-8 rounded-3xl">
+          <div className="flex p-4 border-b-2 border-blue-500">
+            <div className="w-1/6 text-lg font-semibold">Pair</div>
+            <div className="w-1/6 text-lg font-semibold">Coin</div>
+            <div className="w-1/6 text-lg font-semibold">Last Price</div>
+            <div className="w-1/6 text-lg font-semibold">24H Change</div>
+            <div className="w-1/6 text-lg font-semibold">Market Cap</div>
+            <div className="w-1/6 text-lg font-semibold">24H Global Volume</div>
           </div>
+          
           {isFound ? (
             inputVal === "" ? (
               datas.map((data) => (
                 <div
                   key={data.id}
-                  className="flex hover:bg-gray-50 cursor-pointer diwddvide-x border-b-2 p-4
+                  className="flex hover:bg-gray-50 cursor-pointer border-b-2 p-4
            "
                 >
                   <div className="font-semibold w-1/6">
@@ -62,28 +63,42 @@ function Home({ datas }) {
 
                   <div className="w-1/6">{data.name}</div>
                   <div className="w-1/6">
-                    {Number(data.priceUsd).toFixed(5).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+                    {Number(data.priceUsd)
+                      .toFixed(5)
+                      .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                   </div>
 
-                  <div className="w-1/12 text-right ">
+                  <div className="w-1/12 text-right pr-8">
                     {/* logic to change colors according to market changes */}
-                    {Number(data.changePercent24Hr).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') > 0 ? (
+                    {Number(data.changePercent24Hr)
+                      .toFixed(2)
+                      .replace(/\d(?=(\d{3})+\.)/g, "$&,") > 0 ? (
                       <p className="text-green-500 font-semibold">
-                        {Number(data.changePercent24Hr).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} %
+                        {Number(data.changePercent24Hr)
+                          .toFixed(2)
+                          .replace(/\d(?=(\d{3})+\.)/g, "$&,")}{" "}
+                        %
                       </p>
                     ) : (
                       <p className="text-red-500 font-semibold">
-                        {Number(data.changePercent24Hr).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} %
+                        {Number(data.changePercent24Hr)
+                          .toFixed(2)
+                          .replace(/\d(?=(\d{3})+\.)/g, "$&,")}{" "}
+                        %
                       </p>
                     )}
                     {/* end of the logic */}
                   </div>
                   <div className="w-1/12"></div>
                   <div className="w-1/6">
-                    {Number(data.marketCapUsd).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+                    {Number(data.marketCapUsd)
+                      .toFixed(2)
+                      .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                   </div>
                   <div className="w-1/6 ">
-                    {Number(data.volumeUsd24Hr).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+                    {Number(data.volumeUsd24Hr)
+                      .toFixed(2)
+                      .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                   </div>
                 </div>
               ))
@@ -101,28 +116,42 @@ function Home({ datas }) {
 
                   <div className="w-1/6">{result.name}</div>
                   <div className="w-1/6">
-                    {Number(result.priceUsd).toFixed(5).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+                    {Number(result.priceUsd)
+                      .toFixed(5)
+                      .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                   </div>
 
                   <div className="w-1/12 text-right ">
                     {/* logic to change colors according to market changes */}
-                    {Number(result.changePercent24Hr).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') > 0 ? (
+                    {Number(result.changePercent24Hr)
+                      .toFixed(2)
+                      .replace(/\d(?=(\d{3})+\.)/g, "$&,") > 0 ? (
                       <p className="text-green-500 font-semibold">
-                        {Number(result.changePercent24Hr).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} %
+                        {Number(result.changePercent24Hr)
+                          .toFixed(2)
+                          .replace(/\d(?=(\d{3})+\.)/g, "$&,")}{" "}
+                        %
                       </p>
                     ) : (
                       <p className="text-red-500 font-semibold">
-                        {Number(result.changePercent24Hr).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} %
+                        {Number(result.changePercent24Hr)
+                          .toFixed(2)
+                          .replace(/\d(?=(\d{3})+\.)/g, "$&,")}{" "}
+                        %
                       </p>
                     )}
                     {/* end of the logic */}
                   </div>
                   <div className="w-1/12"></div>
                   <div className="w-1/6">
-                    {Number(result.marketCapUsd).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+                    {Number(result.marketCapUsd)
+                      .toFixed(2)
+                      .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                   </div>
                   <div className="w-1/6 ">
-                    {Number(result.volumeUsd24Hr).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+                    {Number(result.volumeUsd24Hr)
+                      .toFixed(2)
+                      .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                   </div>
                 </div>
               ))
